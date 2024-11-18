@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingos Ei! - Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logobingosei.png" alt="Bingos Ei! Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="hero">
+            <img src="82a1f829c7e9da4e2f81d2fa7424e5fe.jpeg" alt="Imagen Principal" class="hero-image">
+            <div class="hero-text">
+                <h1>Bingos Ei!</h1>
+                <p>¡Garantiza tu suerte!</p>
+            </div>
+        </section>
+
+       <section class="services">
+    <h2>Empieza a Jugar</h2>
+    <div class="carousel">
+        <button class="prev-btn">&#10094;</button> <!-- Botón de retroceder -->
+        <div class="carousel-images">
+            <div class="service active">
+                <img src="Diseño sin título.jpg" alt="Organizar un Bingo">
+                <p>Organizar un Bingo</p>
+            </div>
+            <div class="service">
+                <img src="lottery-8093660_1280.jpg" alt="Unirse a un Bingo">
+                <p>Unirse a un Bingo existente</p>
+            </div>
+            <div class="service">
+                <img src="lottery-8093655_1280.jpg" alt="Competir en Bingos">
+                <p>Competir en Bingos</p> <!-- Nuevo servicio añadido -->
+            </div>
+        </div>
+        <button class="next-btn">&#10095;</button> <!-- Botón de avanzar -->
+    </div>
+</section>
+
+        <section class="about-us">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <img src="flyer.png" alt="Sobre nosotros">
+                <p>Bingos Ei! se dedica a ofrecer espacios para que las personas puedan realizar con la mayor confianza y seguridad posible sus eventos de bingo.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+    <h2>Contáctanos</h2>
+    <div class="contact-container" style="display: flex; justify-content: center; align-items: flex-start;">
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message"></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+
+        <!-- Información de contacto: Teléfono y WhatsApp -->
+        <div class="contact-info">
+            <p><strong>Número de Teléfono:</strong> 274 2342</p>
+            <p><strong>WhatsApp:</strong> 6666 6666</p>
+			<p><strong>Instagram:</strong> @bingoseipty</p>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bingos Ei. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+const images = document.querySelectorAll('.carousel-images .service');
+const prevButton = document.querySelector('.prev-btn');
+const nextButton = document.querySelector('.next-btn');
+
+function showImage(index) {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (index + images.length) % images.length; // Asegura que el índice sea circular
+    images[currentIndex].classList.add('active');
+
+    // Mueve el carrusel para mostrar la imagen activa
+    const offset = -currentIndex * 100; 
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+}
+
+function showNextImage() {
+    showImage(currentIndex + 1);
+}
+
+function showPrevImage() {
+    showImage(currentIndex - 1);
+}
+
+// Cambia la imagen cada 3 segundos automáticamente
+let interval = setInterval(showNextImage, 3000);
+
+// Botones para cambiar manualmente
+nextButton.addEventListener('click', function() {
+    clearInterval(interval); // Detiene el cambio automático al usar los botones manuales
+    showNextImage();
+    interval = setInterval(showNextImage, 3000); // Reinicia el intervalo después de la acción manual
+});
+
+prevButton.addEventListener('click', function() {
+    clearInterval(interval);
+    showPrevImage();
+    interval = setInterval(showNextImage, 3000);
+});
+
+    </script>
+</body>
+</html>
